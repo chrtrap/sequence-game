@@ -12,22 +12,21 @@ To set up and play the Sequence game on your local machine, follow these steps:
    ```bash
    git clone https://github.com/chrtrap/sequence-game.git
 
-1.  **Navigate to the Project Directory**:
-
+2.  **Navigate to the Project Directory**:
 
     ```bash
     cd sequence-game
 
-2.  **Install the Required Dependencies**: Ensure you have Python installed. Install the necessary libraries using pip:
+3.  **Install the Required Dependencies**: Ensure you have Python installed. Install the necessary libraries using pip:
 
     ```bash
-   pip install itertools numpy pygame
+      pip install itertools numpy pygame
 
-3.  **Run the Game**: Execute the `sequence_game.py` file to start the game:
+4.  **Run the Game**: Execute the `sequence_game.py` file to start the game:
 
 
     ```bash
-   python sequence_game.py
+      python sequence_game.py
 
 Usage
 -----
