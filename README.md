@@ -74,4 +74,4 @@ For questions or suggestions, reach out to chrtrap@gmail.com.
 Acknowledgments
 ---------------
 
-This game is inspired by the classic board game Sequence. Special thanks to the creators of Sequence for their innovative design and to the Pygame and NumPy communities for their valuable tools.
+This game is inspired by the classic board game Sequence. Special thanks to the creators of Sequence and to the Pygame and NumPy communities for their valuable tools.
