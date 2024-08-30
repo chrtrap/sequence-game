@@ -1,0 +1,9 @@
+# macOS specific files
+.DS_Store
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Specific Git attributes file, if not needed
+.gitattributes
