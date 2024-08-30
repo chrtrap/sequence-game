@@ -27,7 +27,7 @@ To set up and play the Sequence game on your local machine, follow these steps:
 
 
     ```bash
-    python sequence_game.py
+   python sequence_game.py
 
 Usage
 -----
