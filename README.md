@@ -20,7 +20,7 @@ To set up and play the Sequence game on your local machine, follow these steps:
 3.  **Install the Required Dependencies**: Ensure you have Python installed. Install the necessary libraries using pip:
 
     ```bash
-    pip install itertools numpy pygame
+    pip install numpy pygame
 
 4.  **Run the Game**: Execute the `sequence_game.py` file to start the game:
 
