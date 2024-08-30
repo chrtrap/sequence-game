@@ -65,10 +65,6 @@ Technologies Used
 -   **itertools**: For efficient looping and data combinations.
 
 
-License
--------
-
-This project is licensed under the MIT License. See the <LICENSE> file for details.
 
 Contact
 -------
