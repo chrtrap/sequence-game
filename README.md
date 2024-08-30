@@ -1,4 +1,4 @@
-`# Sequence Game
+# Sequence Game
 
 ## Description
 
