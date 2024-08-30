@@ -1,5 +1,4 @@
 import itertools
-from queue import Empty
 import numpy as np
 
 def make_cards():
