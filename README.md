@@ -2,7 +2,7 @@
 
 ## Description
 
-This project is a digital version of the board game **Sequence**. Play against a computer opponent with a graphical interface built using Python and Pygame. The game includes advanced AI for a challenging single-player experience.
+This project is a digital adaptation of the board game **Sequence**. It allows you to play against a computer opponent through an intuitive graphical interface built with Python and Pygame. The game features a computer opponent designed to offer a challenging single-player experience.
 
 ## Installation
 
@@ -53,7 +53,7 @@ Game Files
 Features
 --------
 
--   **Single-Player Mode**: Challenge yourself against a sophisticated computer opponent.
+-   **Single-Player Mode**: Test yourself against a challenging computer opponent.
 -   **Graphical User Interface**: Experience an intuitive and user-friendly interface designed with Pygame.
 -   **Realistic Gameplay**: Experience the authentic rules and gameplay of the original Sequence board game.
 
