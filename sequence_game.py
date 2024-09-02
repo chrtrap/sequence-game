@@ -19,12 +19,6 @@ YELLOW = (255,255,0)
 LIGHT_BLUE = (173,216,230)
 DARK_BLUE = (0,0, 80)
 
-def make_cards():
-    colors = ["S","H","D","C"]
-    numbers = [str(num) for num in range(2,11)] + ["Q", "K", "A"]
-
-    cards = [col+num for col in colors for num in numbers]
-    return cards
 
 cards = make_cards()
 
@@ -33,119 +27,15 @@ hearts = cards[12:24]
 diamonds = cards[24:36]
 clubs = cards[36:48]
 
-def changeCaps(string):
-    if not isinstance(string, str):
-        return string
-    stringo = ''
-    for c in string:
-        if c.islower():
-            stringo += c.upper()
-        else:
-            stringo += c
-    return stringo
-
 cards_w_j = cards + ["HJ","SJ","CJ","DJ"]
-deck = cards_w_j + cards_w_j
-
-def make_board():
-    board = np.empty(dtype="object",shape=(10,10))
-    board[0,0] = "FF"
-    board[0,9] = "FF"
-    board[9,0] = "FF"
-    board[9,9] = "FF"
-
-    i = 1
-    j = 0
-    f_count = 0
-    for card in reversed(diamonds):
-        if board[i,j] == "FF":
-            f_count += 1
-            j += 1
-        if f_count > 0:
-            board[i,j] = card
-            j += 1
-        else:
-            board[i,j] = card
-            i += 1
-
-    board_cards = spades + diamonds + clubs[::-1] + hearts[::-1] + spades + diamonds + clubs[::-1] + hearts[::-1]
-    count = 0
-
-    row, col = 0, 9
-
-    for i in range(1,9):
-        board[row+i, col] = board_cards[count]
-        cur_row = row+i
-        count += 1
-    row = cur_row +1
-    for i in range(1,9):
-        board[row, col-i] = board_cards[count]
-        cur_col = col-i
-        count += 1
-    col = cur_col -1
-    for i in range(1,9):
-        board[row-i, col] = board_cards[count]
-        cur_row = row-i
-        count += 1
-    row = cur_row -1
-    for i in range(1,9):
-        board[row,col+i] = board_cards[count]
-        cur_col = col+i
-        count += 1
-    col = cur_col
-    row += 1
-    lth = 8
-    for _ in range(4):
-        for i in range(lth):
-            board[row+i, col] = board_cards[count]
-            cur_row = row+i
-            count += 1
-        row = cur_row
-        for i in range(1,lth):
-            board[row, col-i] = board_cards[count]
-            cur_col = col-i
-            count += 1
-        col = cur_col
-        for i in range(1,lth):
-            board[row-i, col] = board_cards[count]
-            cur_row = row-i
-            count += 1
-        row = cur_row
-        lth -= 1
-        for i in range(1,lth):
-            board[row,col+i] = board_cards[count]
-            cur_col = col+i
-            count += 1
-        col = cur_col
-        row += 1
-        lth -= 1
-    return board                  
+deck = cards_w_j + cards_w_j          
 
 board = make_board()
-
-def card_sqr():
-    dic = {}
-    for card in cards:
-        dic[card] = [(i,j,card) for i in range(10) for j in range(10) if board[i,j]==card]
-    dic["DJ"] = [(i,j, "DJ") for i in range(10) for j in range(10)]
-    dic["CJ"] = [(i,j, "CJ") for i in range(10) for j in range(10)]
-    dic["HJ"] = []
-    dic["SJ"] = []
-    return dic
-
-card_sqrs = card_sqr()
-
-def reverse_dict():
-    dic = {}
-    for i in range(10):
-        for j in range(10):
-            dic[(i,j)] = board[i,j]
-    return dic
 
 inv_card = reverse_dict()
 
 def check_sqrs_card(card, board):
-    dic = card_sqr()
+    dic = card_dict()
     listi = []
     for pos in dic[card]:
         if board[pos[:2]] == 0:
@@ -162,10 +52,10 @@ def limit_add_jack_sqrs(board,J):
     return listi
 
 
-card_dict = {"A":"ace","K":"king", "Q": "queen", "J": "jack",
+img_card_dict = {"A":"ace","K":"king", "Q": "queen", "J": "jack",
             "D":"diamonds","S":"spades","C":"clubs","H":"hearts","F":"F"}
 for i in range(1,10):
-    card_dict[str(i+1)] = i+1
+    img_card_dict[str(i+1)] = i+1
 
 
 
@@ -209,13 +99,13 @@ def draw_hand(hand):
     col2 = 0
     for card in hand:
         if no <= 2:
-            WIN.blit(load_card_image(card_dict[card[0]],card_dict[card[1:]],"b"),(1065,20+col1*110))
+            WIN.blit(load_card_image(img_card_dict[card[0]],img_card_dict[card[1:]],"b"),(1065,20+col1*110))
             col1 += 1
         elif no >= 3 and no <= 5:
-            WIN.blit(load_card_image(card_dict[card[0]],card_dict[card[1:]],"b"),(1215,20+col2*110))
+            WIN.blit(load_card_image(img_card_dict[card[0]],img_card_dict[card[1:]],"b"),(1215,20+col2*110))
             col2 += 1
         else:
-            WIN.blit(load_card_image(card_dict[card[0]],card_dict[card[1:]],"b"),(1140,-20+col2*110))
+            WIN.blit(load_card_image(img_card_dict[card[0]],img_card_dict[card[1:]],"b"),(1140,-20+col2*110))
         no += 1
     pygame.display.update()
 
@@ -406,10 +296,10 @@ def main():
         if start_game == -1:
             draw_board(start_game,player_turn, mouse)
             empty_board = make_empty_board()
-            com_dict = card_sqr()
+            com_dict = card_dict()
             com_dict["DJ"] = limit_add_jack_sqrs(empty_board, "DJ")
             com_dict["CJ"] = limit_add_jack_sqrs(empty_board, "CJ")
-            player_dict = card_sqr()
+            player_dict = card_dict()
             player_dict["HJ"] = [(i,j,"HJ") for i in range(10) for j in range(10)]
             player_dict["SJ"] = [(i,j,"SJ") for i in range(10) for j in range(10)]
             chips = []
@@ -483,7 +373,7 @@ def main():
                 if card == real_card:
                     com_hand[i] = playing_deck.pop(0)
                     break
-            WIN.blit(load_card_image(card_dict[real_card[0]],card_dict[real_card[1:]],"s"),(1190,600))
+            WIN.blit(load_card_image(img_card_dict[real_card[0]],img_card_dict[real_card[1:]],"s"),(1190,600))
             show_board_with_chips(chips,0, empty_board)
             com_score, player_score, com_points, player_points = seq_points(empty_board)
             if com_points >= 2 or player_points >= 2:
