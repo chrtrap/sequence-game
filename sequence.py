@@ -776,4 +776,5 @@ def game():
         return print("Game is finished. Player 2 won.")
 
 
-
+if __name__ == "__main__":
+    game()
